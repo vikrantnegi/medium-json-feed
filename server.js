@@ -16,7 +16,7 @@ http
 
     console.log(`> GET: '${req.url}' --- ${new Date()}`);
 
-    mediumJSONFeed(req.url, data => {
+    mediumJSONFeed('@vikrantnegi', data => {
       res.writeHead(data.status || 500, headers);
       res.end(JSON.stringify(data, null, 2), 'utf-8');
     });

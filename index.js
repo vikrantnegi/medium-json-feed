@@ -7,7 +7,11 @@ const fail = (status, error, reject, callback) => {
 };
 
 module.exports = (endpoint = '/', callback) => {
-  const url = `https://medium.com/@vikrantnegi?format=json`;
+  if (endpoint.charAt(0) !== '/') {
+    endpoint = `/${endpoint}`;
+  }
+
+  const url = `https://medium.com${endpoint}${endpoint.indexOf('?') === -1 ? '?' : '&'}format=json`;
 
   return new Promise((resolve, reject) =>
     https
